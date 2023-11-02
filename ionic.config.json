@@ -1,0 +1,7 @@
+{
+  "name": "greencheck",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
