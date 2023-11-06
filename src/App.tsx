@@ -1,7 +1,20 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+  setupIonicReact
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { images, square, triangle } from 'ionicons/icons';
+
+/* Pages */
+import HomePage from './pages/Home';
+import CapturePage from './pages/Capture';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,14 +40,11 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
+        <IonRouterOutlet>
+          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/capture" component={CapturePage}/>
+          <Redirect exact from="/" to="/home" />
+        </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );
