@@ -73,7 +73,7 @@ const HomePage: React.FC = () => {
 
       <IonButton  
         id="analyze"
-        style={{ display: 'block', margin: '16px auto 0' }}
+        style={{ display: 'flex', margin: '16px auto 0' }}
         disabled={isAnalyzing}
       >
         Analyze

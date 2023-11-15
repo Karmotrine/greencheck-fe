@@ -2,8 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 768px;
-    background-color:  rgb(231, 233, 236);
-    width: 768px;
-    margin:0 auto;
+    background-color: rgb(231, 233, 236);
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#addFileContainer::before {
+    content: '';
+    padding-top: 100%;
+    display: block;
+}
+
+@media (max-width: 767px) {
+    #addFileContainer {
+        width: 100%;
+    }
 }
