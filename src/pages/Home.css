@@ -1,8 +1,33 @@
 #analysisResultDiv {
     display: flex;
-    background-color: gray;
-    width: 100%;
+    background-color: rgb(231, 233, 236);
+    width: 50%;
     height: 93px;
     justify-content: center;
     align-items: center;
+    
 }
+ion-toolbar {
+    --background: #79AC78;
+    color: white;
+  }
+ion-title{
+  font-weight: bold;
+}
+#analyze {
+    --background: #79AC78;
+    --border-radius: 5px; 
+    --padding-end: 20px; 
+    width: 50%;
+    margin-top: 16px;
+}
+#buttons{
+    --border-color: #d7d8da;
+    --color: black;
+    --border-radius: 0; 
+    margin-right: 0;
+    width: 340px;
+    font-weight: bold;
+    --background: #ffff;
+}
+  

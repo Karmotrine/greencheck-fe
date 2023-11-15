@@ -13,50 +13,53 @@ const HomePage: React.FC = () => {
   const { photo, deletePhoto } = usePhotoStore();
   const [photoToDelete, setPhotoToDelete] = useState<UserPhoto | null>();
   const { featureSelector, setFeatureSelector } = useFeatSelectStore();
-  const [ isAnalyzing, setIsAnalyzing ] = useState<boolean>(false);
+  const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+
 
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar >
           <IonTitle className="ion-text-center">GreenCheck</IonTitle>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="ion-padding">
+      <IonContent fullscreen className="ion-padding" >
         { photo 
           ?
             <IonImg onClick={() => setPhotoToDelete(photo)} src={photo?.webviewPath} />
           :
             <AddFileContainer />
         }
-
-      <div style={{display:"flex"}}>
+  <p style={{display:"flex", justifyContent:"center", fontWeight:"bold", marginBottom:"2px"}}>Feature Selector</p>
+      <div style={{display:"flex", justifyContent:"center"}}>
         <IonButton 
+          id="buttons"
           onClick={() => setFeatureSelector("PSO")} 
           fill={featureSelector === "PSO" ? "solid" : "outline"}
-          style={{flex: 1}}
+          style={{ borderBottom: featureSelector === "PSO" ? "4px solid #79AC78"  : "none" }}
         >
           PSO
         </IonButton>
         <IonButton 
+          id="buttons"
           onClick={() => setFeatureSelector("ABC")} 
           fill={featureSelector === "ABC" ? "solid" : "outline"}
-          style={{flex: 1}}
+          style={{ borderBottom: featureSelector === "ABC" ? "4px solid #79AC78" : "none" }}
         >
           ABC
         </IonButton>
         <IonButton 
+          id="buttons"
           onClick={() => setFeatureSelector("ACO")} 
           fill={featureSelector === "ACO" ? "solid" : "outline"}
-          style={{flex: 1}}
+          style={{ borderBottom: featureSelector === "ACO" ? "4px solid #79AC78" : "none" }}
         >
           ACO
         </IonButton>
       </div>
-
-      <div>
-        <p>Diagnosis</p>
+      <p style={{display:"flex", justifyContent:"center", fontWeight:"bold", marginBottom:"2px"}}>Diagnosis</p>
+      <div style={{display:"flex", justifyContent:"center"}}>
         <div id="analysisResultDiv">
           { isAnalyzing 
             ?
@@ -67,8 +70,9 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <IonButton 
-        expand="full"
+      <IonButton  
+        id="analyze"
+        style={{ display: 'block', margin: '16px auto 0' }}
         disabled={isAnalyzing}
       >
         Analyze
