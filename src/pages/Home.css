@@ -21,7 +21,7 @@ ion-title{
     width: 50%;
     margin-top: 16px;
 }
-#buttons{
+.button-normal{
     --border-color: #d7d8da;
     --color: black;
     --border-radius: 0; 
@@ -31,3 +31,5 @@ ion-title{
     --background: #ffff;
 }
   
+.button-active {
+  border-bottom: 4px solid #79AC78;}

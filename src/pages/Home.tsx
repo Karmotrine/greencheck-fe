@@ -12,8 +12,9 @@ import { useFeatSelectStore } from '../hooks/useFeatSelectStore';
 const HomePage: React.FC = () => {
   const { photo, deletePhoto } = usePhotoStore();
   const [photoToDelete, setPhotoToDelete] = useState<UserPhoto | null>();
-  const { featureSelector, setFeatureSelector } = useFeatSelectStore();
+  const [featureSelector, setFeatureSelector] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  
 
 
   return (
@@ -37,7 +38,7 @@ const HomePage: React.FC = () => {
           id="buttons"
           onClick={() => setFeatureSelector("PSO")} 
           fill={featureSelector === "PSO" ? "solid" : "outline"}
-          style={{ borderBottom: featureSelector === "PSO" ? "4px solid #79AC78"  : "none" }}
+          className={`button-normal ${featureSelector === "PSO" ? "button-active" : ""}`}
         >
           PSO
         </IonButton>
@@ -45,7 +46,7 @@ const HomePage: React.FC = () => {
           id="buttons"
           onClick={() => setFeatureSelector("ABC")} 
           fill={featureSelector === "ABC" ? "solid" : "outline"}
-          style={{ borderBottom: featureSelector === "ABC" ? "4px solid #79AC78" : "none" }}
+          className={`button-normal ${featureSelector === "ABC" ? "button-active" : ""}`}
         >
           ABC
         </IonButton>
@@ -53,7 +54,7 @@ const HomePage: React.FC = () => {
           id="buttons"
           onClick={() => setFeatureSelector("ACO")} 
           fill={featureSelector === "ACO" ? "solid" : "outline"}
-          style={{ borderBottom: featureSelector === "ACO" ? "4px solid #79AC78" : "none" }}
+          className={`button-normal ${featureSelector === "ACO" ? "button-active" : ""}`}
         >
           ACO
         </IonButton>
