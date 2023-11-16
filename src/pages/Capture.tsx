@@ -4,6 +4,7 @@ import { arrowBackOutline, cameraOutline, imageOutline } from 'ionicons/icons';
 
 import { usePhotoStore } from "../hooks/usePhotoStore";
 import { useHistory } from 'react-router-dom';
+import { Capacitor } from '@capacitor/core';
 
 import { Capacitor } from '@capacitor/core';
 
@@ -16,7 +17,7 @@ const CapturePage: React.FC = () => {
     <IonPage>
 
       <IonHeader>
-        <IonToolbar id="header" style={{display:"flex", flexDirection: "column"}}>
+        <IonToolbar id="header" style={{display:"flex", flexDirection: "column",}}>
           <IonButtons slot='start'>
             <IonBackButton defaultHref="/home"></IonBackButton>
           </IonButtons>
