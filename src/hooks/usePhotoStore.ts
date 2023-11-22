@@ -5,6 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 import { Capacitor } from '@capacitor/core';
 import { create } from "zustand";
 
+
 const $PHOTO_STORAGE = 'photos';
 
 export interface UserPhoto {
