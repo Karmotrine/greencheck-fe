@@ -5,6 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 import { Capacitor } from '@capacitor/core';
 import { create } from "zustand";
 
+
 const $PHOTO_STORAGE = 'photos';
 
 export interface UserPhoto {
@@ -79,7 +80,7 @@ const savePicture = async (photo: Photo, fileName: string): Promise<UserPhoto> =
         const file = await Filesystem.readFile({
         path: photo.path!
         });
-        base64Data = file.data;
+        base64Data = file.data as string;
     } else {
         base64Data = await base64FromPath(photo.webPath!);
     }

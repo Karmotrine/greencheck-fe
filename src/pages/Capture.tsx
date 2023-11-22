@@ -4,6 +4,7 @@ import { arrowBackOutline, cameraOutline, imageOutline } from 'ionicons/icons';
 
 import { usePhotoStore } from "../hooks/usePhotoStore";
 import { useHistory } from 'react-router-dom';
+import { Capacitor } from '@capacitor/core';
 
 const CapturePage: React.FC = () => {
 
@@ -14,7 +15,7 @@ const CapturePage: React.FC = () => {
     <IonPage>
 
       <IonHeader>
-        <IonToolbar id="header" style={{display:"flex", flexDirection: "column"}}>
+        <IonToolbar id="header" style={{display:"flex", flexDirection: "column",}}>
           <IonButtons slot='start'>
             <IonBackButton defaultHref="/home"></IonBackButton>
           </IonButtons>
@@ -24,6 +25,8 @@ const CapturePage: React.FC = () => {
 
       <IonContent fullscreen>
         <IonList>
+
+          {Capacitor.isNativePlatform() &&
           <IonItem
             className="itemSetting"
             button
@@ -34,7 +37,7 @@ const CapturePage: React.FC = () => {
           >
             <IonIcon icon={cameraOutline} aria-hidden="true" slot="start"></IonIcon>
             <IonLabel>Camera</IonLabel>
-          </IonItem>
+          </IonItem>}
           <IonItem
             className="itemSetting"
             button
