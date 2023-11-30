@@ -13,10 +13,31 @@ const HomePage: React.FC = () => {
   const [photoToDelete, setPhotoToDelete] = useState<UserPhoto | null>();
   const [featureSelector, setFeatureSelector] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+  const [diagnosisResults, setDiagnosisResults] = useState<{ name: string; percentage: number }[]>([]);
 
   const handleFeatureButtonClick = (feature: string) => {
     setFeatureSelector((prevFeature) => (prevFeature === feature ? null : feature));
   };
+
+  const handleAnalyzeClick = () => {
+    // analysis
+    const diagnosisres= [
+      { name: 'Healthy', percentage: Math.random() * 100 },
+      { name: 'Bacterial Leaf Blight', percentage: Math.random() * 100 },
+      { name: 'Rice Blast', percentage: Math.random() * 100 },
+      { name: 'Sheath Blight', percentage: Math.random() * 100 },
+    ];
+    setDiagnosisResults(diagnosisres);
+
+    //during the analysis process.
+    setIsAnalyzing(true);
+
+    setTimeout(() => {
+      //when analysis is complete.
+      setIsAnalyzing(false);
+    }, 2000);
+  };
+
 
   return (
     <IonPage>
@@ -32,9 +53,18 @@ const HomePage: React.FC = () => {
         ) : (
           <AddFileContainer />
         )}
-        <p style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', marginBottom: '2px' }}>
-          Feature Selector
+        <p style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', margin: '20px 0 5px 0', color:'#5F6F52' }}>
+          Feature Selectors
         </p>
+        <IonButton
+            id="NoFeature"
+            style={{ display: 'flex', margin: '0 auto 0' }}
+            onClick={() => handleFeatureButtonClick('NoFeature')}
+            fill={featureSelector === 'NoFeature' ? 'solid' : 'outline'}
+            className={`button-normal ${featureSelector === 'NoFeature' ? 'button-active' : ''}`}
+          >
+            No Feature
+          </IonButton>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <IonButton
             id="buttons"
@@ -61,17 +91,39 @@ const HomePage: React.FC = () => {
             ACO
           </IonButton>
         </div>
-        <p style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', marginBottom: '2px' }}>Diagnosis</p>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <div id="analysisResultDiv">
-            {isAnalyzing ? <IonSpinner name="dots" /> : <span>Name of Disease</span>}
-          </div>
+        
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <table className="ion-table">
+          <thead>
+            <tr>
+              <th>Classification Results</th>
+              <th>Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {isAnalyzing ? (
+              <tr>
+                <td colSpan={2} className='dot' >
+                  <IonSpinner name="dots" />
+                </td>
+              </tr>
+            ) : (
+              diagnosisResults.map((result, index) => (
+                <tr key={index} className={result.percentage === Math.max(...diagnosisResults.map(item => item.percentage)) ? 'highest' : ''}>
+                  <td>{result.name}</td>
+                  <td>{result.percentage.toFixed(2)}%</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
         </div>
 
         <IonButton
           id="analyze"
-          style={{ display: 'flex', margin: '16px auto 0' }}
+          style={{ display: 'flex', margin: '20px auto 0' }}
           disabled={isAnalyzing}
+          onClick={handleAnalyzeClick}
         >
           Analyze
         </IonButton>

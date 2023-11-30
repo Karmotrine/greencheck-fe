@@ -33,6 +33,9 @@
     "react": "^18.2.0",
     "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^5.0.2",
+    "react-image-crop": "^10.1.8",
+    "react-native-image-crop-picker": "^0.40.2",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
     "zustand": "^4.4.6"
