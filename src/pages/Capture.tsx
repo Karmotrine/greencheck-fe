@@ -6,8 +6,6 @@ import { usePhotoStore } from "../hooks/usePhotoStore";
 import { useHistory } from 'react-router-dom';
 import { Capacitor } from '@capacitor/core';
 
-import { Capacitor } from '@capacitor/core';
-
 const CapturePage: React.FC = () => {
 
   const { takePhoto } = usePhotoStore();

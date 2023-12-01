@@ -68,7 +68,16 @@ ion-title {
   .ion-table,
   #analyze,
   #NoFeature,
+  .riceleafimage,
   .button-normal {
       width: 100%;
   }
+}
+
+.riceleafimage {
+  width: 50%;
+  height: 75%;
+  display: block;
+  margin: 0 auto;
+  object-fit: fill;
 }
