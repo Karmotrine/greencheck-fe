@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'ionic.greencheck',
-  appName: 'greencheck',
+  appId: 'ionic.ricescope',
+  appName: 'Ricescope',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

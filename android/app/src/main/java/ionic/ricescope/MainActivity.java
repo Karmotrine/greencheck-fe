@@ -1,4 +1,4 @@
-package ionic.greencheck;
+package ionic.ricescope;
 
 import com.getcapacitor.BridgeActivity;
 

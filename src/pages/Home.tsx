@@ -44,7 +44,7 @@ const HomePage: React.FC = () => {
   const { predictionResult, setPredictionResult } = usePredictionStore();
 
 
-  const analyzeToServer = async () =>  {
+  const analyzeToServer = async () => {
     // Fetch the blob from the blob URL
     console.log(`${photo?.webviewPath}`)
     const image = await base64FromPath(`${photo?.webviewPath}`);
@@ -57,24 +57,23 @@ const HomePage: React.FC = () => {
     formData.append('img_base64', image);
 
     // Send a POST request to the API endpoint with the FormData instance
-    axios.post(`https://f728-175-176-28-127.ngrok-free.app/api/analyze/${featureSelector.toLowerCase()}`, formData, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
+    axios.post(`https://greatly-divine-beetle.ngrok-free.app/api/analyze/${featureSelector.toLowerCase()}`, formData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).then(response => {
-        setPredictionResult(response?.data.predictions);
-        console.log(predictionResult)
+      setPredictionResult(response?.data.predictions);
+      setTimeout(() => {
+        setIsAnalyzing(false);
+      }, 777);
     }).catch(error => {
-        console.error(error);
+      console.error(error);
     });
   }
 
   const handleAnalyzeClick = () => {
     setIsAnalyzing(true);
     analyzeToServer();
-    setTimeout(() => {
-      setIsAnalyzing(false);
-    }, 777);
   };
 
 
@@ -82,11 +81,11 @@ const HomePage: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle className="ion-text-center">GreenCheck</IonTitle>
+          <IonTitle className="ion-text-center">RiceScope</IonTitle>
         </IonToolbar>
       </IonHeader>
 
-<IonContent fullscreen className={`${Capacitor.isNativePlatform() ? "" : "ion-padding"}`}>
+      <IonContent fullscreen className={`${Capacitor.isNativePlatform() ? "" : "ion-padding"}`}>
         {photo ? (
           <IonImg
             className="riceleafimage"
@@ -96,18 +95,18 @@ const HomePage: React.FC = () => {
         ) : (
           <AddFileContainer />
         )}
-        <p style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', margin: '20px 0 5px 0', color:'#5F6F52' }}>
+        <p style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', margin: '20px 0 5px 0', color: '#5F6F52' }}>
           Feature Selectors
         </p>
         <IonButton
-            id="NoFeature"
-            style={{ display: 'flex', margin: '0 auto 0' }}
-            onClick={() => setFeatureSelector('BASE')}
-            fill={featureSelector === 'BASE' ? 'solid' : 'outline'}
-            className={`button-normal ${featureSelector === 'BASE' ? 'button-active' : ''}`}
-          >
-            No Feature
-          </IonButton>
+          id="NoFeature"
+          style={{ display: 'flex', margin: '0 auto 0' }}
+          onClick={() => setFeatureSelector('BASE')}
+          fill={featureSelector === 'BASE' ? 'solid' : 'outline'}
+          className={`button-normal ${featureSelector === 'BASE' ? 'button-active' : ''}`}
+        >
+          No Feature
+        </IonButton>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <IonButton
             id="buttons"
@@ -134,23 +133,23 @@ const HomePage: React.FC = () => {
             ACO
           </IonButton>
         </div>
-        
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <table className="ion-table">
-          <thead>
-            <tr>
-              <th>Classification Results</th>
-              <th>Percentage</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isAnalyzing ? (
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <table className="ion-table">
+            <thead>
               <tr>
-                <td colSpan={2} className='dot' >
-                  <IonSpinner name="dots" />
-                </td>
+                <th>Classification Results</th>
+                <th>Percentage</th>
               </tr>
-            ) : (
+            </thead>
+            <tbody>
+              {isAnalyzing ? (
+                <tr>
+                  <td colSpan={2} className='dot' >
+                    <IonSpinner name="dots" />
+                  </td>
+                </tr>
+              ) : (
                 Object.keys(predictionResult).map((key: string, index) => {
                   if (key === "predicted") return null;
 
@@ -161,9 +160,9 @@ const HomePage: React.FC = () => {
                     </tr>
                   )
                 })
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
         </div>
 
         <IonButton

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">greencheck</string>
-    <string name="title_activity_main">greencheck</string>
-    <string name="package_name">ionic.greencheck</string>
-    <string name="custom_url_scheme">ionic.greencheck</string>
+    <string name="app_name">Ricescope</string>
+    <string name="title_activity_main">Ricescope</string>
+    <string name="package_name">ionic.ricescope</string>
+    <string name="custom_url_scheme">ionic.ricescope</string>
 </resources>

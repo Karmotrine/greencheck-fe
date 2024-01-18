@@ -2,17 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSCameraUsageDescription</key>
-    <string>To capture images</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>To add images</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>To store images</string>
-
+	<key>NSCameraUsageDescription</key>
+	<string>To capture images</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To add images</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To store images</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>greencheck</string>
+	<string>Ricescope</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
