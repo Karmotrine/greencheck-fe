@@ -55,7 +55,7 @@ ion-title {
   --border-color: #d7d8da;
   --color: black;
   --border-radius: 0;
-  width: 303px;
+  width: 16.5%;
   font-weight: bold;
   --background: #ffff;
 }
@@ -64,20 +64,23 @@ ion-title {
   border-bottom: 4px solid #B99470;
 }
 
-@media (max-width: 767px) {
-  .ion-table,
-  #analyze,
-  #NoFeature,
-  .riceleafimage,
-  .button-normal {
-      width: 100%;
-  }
-}
-
 .riceleafimage {
   width: 50%;
   height: 75%;
   display: block;
   margin: 0 auto;
   object-fit: fill;
+}
+@media (max-width: 800px) {
+  .ion-table,
+  #analyze,
+  #NoFeature,
+  .button-normal {
+    width: 100%;
+  }
+
+  .riceleafimage {
+    width: 100%;
+    height: 50%;
+  }
 }
